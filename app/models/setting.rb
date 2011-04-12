@@ -36,7 +36,7 @@ class Setting
 
   protected
   def load_default_template
-    [:page, :stylesheet, :divider, :note, :upload].each do |part|
+    [:page, :stylesheet, :divider, :note, :upload, :navigation].each do |part|
       self[part.to_sym] = File.open("#{Rails.root}/template/#{part}.tpl").read
     end
   end
