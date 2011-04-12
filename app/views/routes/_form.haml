@@ -1,0 +1,17 @@
+= form_for route, :html => {:class => 'form'} do |f|
+  .group
+    = f.label :page_id, 'Page', :class => :label
+    = f.select :page_id, options_for_select(@setting.pages.all.map {|p| [p.name, p.page_id]}, route.page_id)
+  .group
+    = f.label :permalink, 'Permalink', :class => :label
+    = f.text_field :permalink, :class => 'text_field'
+  .group
+    = f.label :enabled, :class => :label
+    = f.check_box :enabled
+  .group
+    = f.label :root_page, :class => :label
+    = f.check_box :root_page
+
+  = submit_tag
+  or
+  = link_to 'Back', routes_path

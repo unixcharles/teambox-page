@@ -1,0 +1,9 @@
+#block-text.block
+  .content
+    %h1= t('.login.title', :default => 'Login')
+    .inner
+      %p.first
+        = t('.login.explain', :default => 'You need to login with your Teambox account')
+      %hr
+      %p
+        = link_to t('.login.link', :default => 'Proceed with login'), '/auth/teambox'

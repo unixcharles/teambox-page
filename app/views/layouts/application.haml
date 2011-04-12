@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Teambox Page
+    = stylesheet_link_tag "base", "style"
+    = csrf_meta_tag
+  %body
+    #container
+      #wrapper
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
+        #main
+          = yield
+        #sidebar
+          = yield :sidebar

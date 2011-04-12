@@ -1,0 +1,14 @@
+defaults: &defaults
+  secret_token: <%= ENV['COOKIE_SECRET'] %>
+  heroku: <%= !!ENV['HEROKU_TYPE'] %>
+  administrators: <%= ENV['TEAMBOX_ADMINISTRATOR'] %>
+  teambox:
+    key: <%= ENV['TEAMBOX_KEY'] %>
+    secret: <%= ENV['TEAMBOX_SECRET'] %>
+
+development:
+  <<: *defaults
+production:
+  <<: *defaults
+test:
+  <<: *testing

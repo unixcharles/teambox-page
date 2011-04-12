@@ -1,0 +1,14 @@
+defaults: &defaults
+  host: localhost
+
+development:
+  <<: *defaults
+  database: teambox_page_development
+
+test:
+  <<: *defaults
+  database: teambox_page_test
+
+# set these environment variables on your prod server
+production:
+  uri: <%= ENV['MONGOHQ_URL'] %>

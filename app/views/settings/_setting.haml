@@ -1,0 +1,9 @@
+.group
+  = label_tag :project_id, 'Project', :class => :label
+  = select_tag :project_id, options_for_select(@current_user.projects.map {|p| [p.name, p.project_id]}, @setting.project_id)
+.group
+  = label_tag :cache_expiration, 'Cache expiration, in hours', :class => :label
+  = text_field_tag :cache_expiration, @setting.cache_expiration, :class => 'text_field'
+
+%p= submit_tag 'Update and fetch pages'
+    

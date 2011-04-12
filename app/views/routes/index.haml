@@ -1,0 +1,17 @@
+.block
+  .content
+    %h2 Routes index
+    .inner
+      %table.table
+        %tbody
+        - @routes.each do |route|
+          %tr
+            %td= route.permalink
+            %td= route.page ? route.page.name : 'Not yet linked'
+            %td= route.enabled? ? 'Active' : 'Disabled'
+            %td= 'Landing page' if route.root_page?
+            %td= link_to 'Preview', route.page ? preview_page_path(route.page_id) : '#'
+            %td= link_to 'Edit', edit_route_path(route)
+            %td= button_to 'Destroy', route, :confirm => 'Are you sure?', :method => :delete
+      = link_to 'New route', new_route_path
+- content_for :sidebar, render('shared/sidebar')

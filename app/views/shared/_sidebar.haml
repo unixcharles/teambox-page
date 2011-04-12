@@ -1,0 +1,9 @@
+.block
+  %h3 Settings
+  %ul.navigation
+    %li= link_to 'Edit routes', routes_path
+    %li= link_to 'Edit settings', settings_path
+  %h3 Templates
+  %ul.navigation
+    - for template in [:page, :navigation, :stylesheet, :divider, :note, :upload,]
+      %li= link_to "Edit #{template} template", settings_path(template)

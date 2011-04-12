@@ -1,0 +1,23 @@
+= javascript_include_tag 'ace', 'ace/theme-clouds', 'ace/mode-html', 'ace/mode-css', 'prototype', 'application'
+- data_type = @part == 'stylesheet' ? 'css' : 'html'
+.group
+  = label_tag @part.to_sym, @part.humanize, :class => :label
+  #editor-container{:style =>"height: 500px; width: 630px; margin-bottom: 10px;"}
+    %hr
+    #editor{:style =>"height: 500px; width: 630px", :'data-type' => data_type}
+  %input{:type => :hidden, :name => "#{@part.to_sym}", :id => @part.to_sym, :value => @setting[@part.to_sym], :nuke_outer_whitespace => true }
+  = submit_tag 'Save'
+
+- content_for :sidebar do
+  .block.notice
+    %h3 Available hash for this template
+    %p
+      - klass = @part.capitalize.constantize rescue nil
+      - if klass and klass == Page
+        = "{{{yield}}}, {{{stylesheet}}}, {{{navigation}}}"
+      - elsif @part == 'navigation'
+        = "{{#pages}} {{name}} {{link}} {{/pages}}"
+      - else
+        = "No hash for stylesheet"
+      = klass.accessible_attributes.to_a.map {|var| "{{#{var}}}" }.join(', ') if klass
+  = yield

@@ -1,0 +1,5 @@
+= form_tag settings_path(params[:part]), :class => 'form' do |f|
+  - if @part
+    = render 'template'
+  - else
+    = render 'setting'

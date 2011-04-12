@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Teambox Page - Login
+    = stylesheet_link_tag "base", "style"
+  %body
+    #container
+      #box
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
+        = yield
