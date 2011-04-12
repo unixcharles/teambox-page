@@ -3,10 +3,8 @@ Teambox Page
 
 This application allow you to pull Pages element from a project on Teambox, and turn them into website, and its also a demo for Teambox API & OAuth2 features.
 
-With this tool, non-technical people you're working with can a website content using Teambox pages, and you can use this app create website out of it. Its designed to deploy on Heroku with MongoDB.
+With this tool, non-technical people build the content of a using Teambox pages, and you can use this app publish it. Its designed to deploy on Heroku with MongoDB.
 
-
-## About 
 
 `Teambox` - [Teambox](http://teambox.com) an [open source](http://github.com/teambox/teamobx) collaborative project management software.
 
@@ -20,7 +18,7 @@ With this tool, non-technical people you're working with can a website content u
     - Create routes that point to Teambox pages
     - Edit your template with mustache
 
-* Each domain is considered as a website. 
+Each domain is considered as a different site. 
 
 ## Getting started
 
@@ -30,11 +28,12 @@ With this tool, non-technical people you're working with can a website content u
     heroku addons:add mongohq:free
 
 You also need to add your Teambox OAuth key & secret token. 
-You can register new application in your account setting on Teambox, the callback URL should be something like `http://YOUR-DOMAIN/auth/teambox/callback`.
+Register new application from your account setting on Teambox. 
+The callback URL should point to `http://YOUR-DOMAIN/auth/teambox/callback`.
 
     heroku config:add TEAMBOX_KEY=XXXXX TEAMBOX_SECRET=XXXXX COOKIE_SECRET=XXXXX
 
-You need to add a list of authorized user, teambox username, comma separated.
+You need to add a list of authorized users, Teambox username, comma separated.
 
     heroku config:add TEAMBOX_ADMINISTRATOR=charles,pablo,jordi
 
@@ -42,4 +41,4 @@ And push
 
     git push heroku master
 
-Pointing any domain to the app will automatically scope into a different website.
+Pointing any domain to the app will automatically scope into a different site.
